@@ -10,6 +10,8 @@ namespace Notadd\Captcha\Listeners;
 
 use Notadd\Captcha\Controllers\CaptchaController;
 use Notadd\Foundation\Routing\Abstracts\RouteRegister as AbstractRouteRegister;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class RouteRegister.
@@ -21,16 +23,17 @@ class RouteRegister extends AbstractRouteRegister
      */
     public function handle()
     {
-        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/baidu'], function () {
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/captcha'], function () {
             $this->router->post('get', BaiduController::class . '@get');
             $this->router->post('set', BaiduController::class . '@set');
         });
-        $this->router->get('captcha', CaptchaController::class . '@getCaptcha');
+        $this->router->get('captcha/{config?}', CaptchaController::class . '@getCaptcha')->middleware('web');
         $this->router->any('captcha-test', function()
         {
             if (\Request::getMethod() == 'POST')
             {
                 $rules = ['captcha' => 'required|captcha'];
+                // dd(Input::all());
                 $validator = Validator::make(Input::all(), $rules);
                 if ($validator->fails())
                 {
@@ -49,6 +52,9 @@ class RouteRegister extends AbstractRouteRegister
             $form .= '<p><button type="submit" name="check">Check</button></p>';
             $form .= '</form>';
             return $form;
-        });
+        })->middleware('web');
+        $this->router->get('test', function() {
+            return app('session')->all();
+        })->middleware('web');
     }
 }

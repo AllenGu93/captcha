@@ -1,6 +1,6 @@
 <?php
 
-namespace Mews\Captcha;
+namespace Notadd\Captcha;
 
 use Laravel\Lumen\Routing\Controller;
 

@@ -14,11 +14,11 @@ namespace Notadd\Captcha;
  */
 
 use Exception;
-use Illuminate\Config\Repository;
+use Notadd\Foundation\Configuration\Repository;
 use Illuminate\Hashing\BcryptHasher as Hasher;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Intervention\Image\ImageManager;
+use Notadd\Foundation\Image\ImageManager;
 use Illuminate\Session\Store as Session;
 
 /**

@@ -25,10 +25,46 @@ class Extension extends AbstractExtension
     {
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
-        $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'Captcha');
+        // $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'Captcha');
 
-        class_exists(Article::class) && Article::observe(ArticleObserver::class);
-        class_exists(Page::class) && Page::observe(PageObserver::class);
+        // Publish configuration files
+        $this->publishes([
+            __DIR__.'/../config/captcha.php' => config_path('captcha.php')
+        ], 'config');
+
+        // HTTP routing
+        if (strpos($this->app->version(), 'Lumen') !== false) {
+           $this->app->get('captcha[/{config}]', 'Notadd\Captcha\LumenCaptchaController@getCaptcha');
+        } else {
+            if ((double) $this->app->version() >= 5.2) {
+                $this->app['router']->get('captcha/{config?}', '\Notadd\Captcha\CaptchaController@getCaptcha')->middleware('web');
+            } else {
+                $this->app['router']->get('captcha/{config?}', '\Notadd\Captcha\CaptchaController@getCaptcha');
+            }
+        }
+
+        // Validator extensions
+        $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
+        {
+            return captcha_check($value);
+        });
+        // Merge configs
+        // $this->mergeConfigFrom(
+        //     __DIR__.'/../config/captcha.php', 'captcha'
+        // );
+
+        // Bind captcha
+        $this->app->bind('captcha', function($app)
+        {
+            return new Captcha(
+                $app['Illuminate\Filesystem\Filesystem'],
+                $app['Notadd\Foundation\Configuration\Repository'],
+                $app['Notadd\Foundation\Image\ImageManager'],
+                $app['Illuminate\Session\Store'],
+                $app['Illuminate\Hashing\BcryptHasher'],
+                $app['Illuminate\Support\Str']
+            );
+        });
     }
 
     /**

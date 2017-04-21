@@ -1,12 +1,12 @@
 <?php
 
-namespace Mews\Captcha;
+namespace Notadd\Captcha;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class CaptchaServiceProvider
- * @package Mews\Captcha
+ * @package Notadd\Captcha
  */
 class CaptchaServiceProvider extends ServiceProvider {
 
@@ -19,17 +19,17 @@ class CaptchaServiceProvider extends ServiceProvider {
     {
         // Publish configuration files
         $this->publishes([
-            __DIR__.'/../resources/captcha.php' => config_path('captcha.php')
+            __DIR__.'/../config/captcha.php' => config_path('captcha.php')
         ], 'config');
 
         // HTTP routing
         if (strpos($this->app->version(), 'Lumen') !== false) {
-           $this->app->get('captcha[/{config}]', 'Mews\Captcha\LumenCaptchaController@getCaptcha');
+           $this->app->get('captcha[/{config}]', 'Notadd\Captcha\LumenCaptchaController@getCaptcha');
         } else {
             if ((double) $this->app->version() >= 5.2) {
-                $this->app['router']->get('captcha/{config?}', '\Mews\Captcha\CaptchaController@getCaptcha')->middleware('web');
+                $this->app['router']->get('captcha/{config?}', '\Notadd\Captcha\CaptchaController@getCaptcha')->middleware('web');
             } else {
-                $this->app['router']->get('captcha/{config?}', '\Mews\Captcha\CaptchaController@getCaptcha');
+                $this->app['router']->get('captcha/{config?}', '\Notadd\Captcha\CaptchaController@getCaptcha');
             }
         }
 
@@ -49,7 +49,7 @@ class CaptchaServiceProvider extends ServiceProvider {
     {
         // Merge configs
         $this->mergeConfigFrom(
-            __DIR__.'/../resources/captcha.php', 'captcha'
+            __DIR__.'/../config/captcha.php', 'captcha'
         );
 
         // Bind captcha
