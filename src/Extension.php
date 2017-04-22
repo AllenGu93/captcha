@@ -2,9 +2,9 @@
 /**
  * This file is part of Notadd.
  *
- * @author TwilRoad <269044570@qq.com>
- * @copyright (c) 2017, iBenchu.org
- * @datetime 2017-02-23 19:36
+ * @author Cst <260096556@qq.com>
+ * @copyright (c) 2017, Cst
+ * @datetime 2017-04-22 15:20
  */
 namespace Notadd\Captcha;
 
@@ -25,35 +25,10 @@ class Extension extends AbstractExtension
     {
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
-        // $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'Captcha');
+        // 翻译文件
+        $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'Captcha');
 
-        // Publish configuration files
-        $this->publishes([
-            __DIR__.'/../config/captcha.php' => config_path('captcha.php')
-        ], 'config');
-
-        // HTTP routing
-        if (strpos($this->app->version(), 'Lumen') !== false) {
-           $this->app->get('captcha[/{config}]', 'Notadd\Captcha\LumenCaptchaController@getCaptcha');
-        } else {
-            if ((double) $this->app->version() >= 5.2) {
-                $this->app['router']->get('captcha/{config?}', '\Notadd\Captcha\CaptchaController@getCaptcha')->middleware('web');
-            } else {
-                $this->app['router']->get('captcha/{config?}', '\Notadd\Captcha\CaptchaController@getCaptcha');
-            }
-        }
-
-        // Validator extensions
-        $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
-        {
-            return captcha_check($value);
-        });
-        // Merge configs
-        // $this->mergeConfigFrom(
-        //     __DIR__.'/../config/captcha.php', 'captcha'
-        // );
-
-        // Bind captcha
+        // 注入 captcha 类
         $this->app->bind('captcha', function($app)
         {
             return new Captcha(
@@ -65,6 +40,22 @@ class Extension extends AbstractExtension
                 $app['Illuminate\Support\Str']
             );
         });
+        // Publish configuration files
+        // $this->publishes([
+        //     __DIR__.'/../config/captcha.php' => config_path('captcha.php')
+        // ], 'config');
+
+        // 加载配置文件
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/captcha.php', 'captcha'
+        );
+
+        // Validator extensions
+        $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
+        {
+            return captcha_check($value);
+        });
+
     }
 
     /**

@@ -4,7 +4,8 @@ namespace Notadd\Captcha\Controllers;
 
 use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Captcha\Captcha;
-// use Illuminate\Routing\Controller;
+use Notadd\Captcha\Handlers\GetHandler;
+use Notadd\Captcha\Handlers\SetHandler;
 
 /**
  * Class CaptchaController
@@ -23,6 +24,41 @@ class CaptchaController extends Controller
     public function getCaptcha(Captcha $captcha, $config = 'default')
     {
         return $captcha->create($config);
+    }
+    /**
+     * CAPTCHA validation
+     *
+     * @param string $captcha
+     * @param string $config
+     * @return boolean
+     */
+    public function validation(string $captcha, $config = 'default')
+    {
+        return $captcha->create($config);
+    }
+    /**
+     * Get handler.
+     *
+     * @param \Notadd\Captcha\Handlers\GetHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     */
+    public function get(GetHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * Set handler.
+     *
+     * @param \Notadd\Captcha\Handlers\SetHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function set(SetHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
     }
 
 }

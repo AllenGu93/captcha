@@ -3,11 +3,11 @@
 namespace Notadd\Captcha;
 
 /**
- * Laravel 5 Captcha package
+ * notadd Captcha package
  *
- * @copyright Copyright (c) 2015 MeWebStudio
- * @version 2.x
- * @author Muharrem ERİN
+ * @copyright Copyright (c) 2017 cst
+ * @version 1.x
+ * @author cst
  * @contact 260096556@qq.com
  * @date 2015-04-03
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License

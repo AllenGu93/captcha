@@ -12,6 +12,7 @@ use Notadd\Captcha\Controllers\CaptchaController;
 use Notadd\Foundation\Routing\Abstracts\RouteRegister as AbstractRouteRegister;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Notadd\Foundation\Configuration\Repository;
 
 /**
  * Class RouteRegister.
@@ -23,9 +24,11 @@ class RouteRegister extends AbstractRouteRegister
      */
     public function handle()
     {
+        // api路由定义
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/captcha'], function () {
-            $this->router->post('get', BaiduController::class . '@get');
-            $this->router->post('set', BaiduController::class . '@set');
+            $this->router->post('get', CaptchaController::class . '@get');
+            $this->router->post('set', CaptchaController::class . '@set');
+            $this->router->post('validation', CaptchaController::class . '@validation');
         });
         $this->router->get('captcha/{config?}', CaptchaController::class . '@getCaptcha')->middleware('web');
         $this->router->any('captcha-test', function()
@@ -53,8 +56,9 @@ class RouteRegister extends AbstractRouteRegister
             $form .= '</form>';
             return $form;
         })->middleware('web');
-        $this->router->get('test', function() {
-            return app('session')->all();
-        })->middleware('web');
+
+        $this->router->get('test', function(Repository $settings) {
+            return dd($settings->all());
+        });
     }
 }
