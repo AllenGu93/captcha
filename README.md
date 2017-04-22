@@ -7,10 +7,10 @@
 
 $domain/captcha/config?
 
-<img src='http://localhost/captcha/default?fys8Ubmm' />
-<img src='http://localhost/captcha/flat?fys8Ubmm' />
-<img src='http://localhost/captcha/mini?fys8Ubmm' />
-<img src='http://localhost/captcha/inverse?fys8Ubmm' />
+`<img src='http://localhost/captcha/default?fys8Ubmm' />`
+`<img src='http://localhost/captcha/flat?fys8Ubmm' />`
+`<img src='http://localhost/captcha/mini?fys8Ubmm' />`
+`<img src='http://localhost/captcha/inverse?fys8Ubmm' />`
 
 
 Based on [L5 Captcha on Github](https://github.com/mewebstudio/captcha)
