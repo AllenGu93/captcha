@@ -28,9 +28,16 @@ class RouteRegister extends AbstractRouteRegister
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/captcha'], function () {
             $this->router->post('get', CaptchaController::class . '@get');
             $this->router->post('set', CaptchaController::class . '@set');
-            $this->router->post('validation', CaptchaController::class . '@validation');
+            $this->router->post('captcha', CaptchaController::class . '@captcha');
         });
-        $this->router->get('captcha/{config?}', CaptchaController::class . '@getCaptcha')->middleware('web');
+        // 测试路由
+        $this->router->group(['prefix' => 'api/captcha'], function () {
+            $this->router->get('get', CaptchaController::class . '@get');
+            $this->router->get('set', CaptchaController::class . '@set');
+            $this->router->get('/', CaptchaController::class . '@captcha');
+        });
+        // 验证码图片路由
+        $this->router->get('captcha/{config?}', CaptchaController::class . '@getCaptcha');
         $this->router->any('captcha-test', function()
         {
             if (\Request::getMethod() == 'POST')

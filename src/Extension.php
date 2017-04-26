@@ -55,7 +55,6 @@ class Extension extends AbstractExtension
         {
             return captcha_check($value);
         });
-
     }
 
     /**

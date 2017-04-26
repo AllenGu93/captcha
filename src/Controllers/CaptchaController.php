@@ -6,6 +6,9 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 use Notadd\Captcha\Captcha;
 use Notadd\Captcha\Handlers\GetHandler;
 use Notadd\Captcha\Handlers\SetHandler;
+use Notadd\Captcha\Handlers\ValidationHandler;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class CaptchaController
@@ -25,6 +28,7 @@ class CaptchaController extends Controller
     {
         return $captcha->create($config);
     }
+
     /**
      * CAPTCHA validation
      *
@@ -32,10 +36,11 @@ class CaptchaController extends Controller
      * @param string $config
      * @return boolean
      */
-    public function validation(string $captcha, $config = 'default')
+    public function captcha(ValidationHandler $handler)
     {
-        return $captcha->create($config);
+        return $handler->toResponse()->generateHttpResponse();
     }
+
     /**
      * Get handler.
      *

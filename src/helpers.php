@@ -35,7 +35,6 @@ if ( ! function_exists('captcha_img')) {
     }
 }
 
-
 if ( ! function_exists('captcha_check')) {
     /**
      * @param $value
