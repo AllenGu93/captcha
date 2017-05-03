@@ -21,7 +21,7 @@ $domain/captcha/config?
 
 设置验证码参数	get		$domain/api/set
 
-验证验证码		post	$domain/api/get
+验证验证码		post	$domain/api/captcha
 
 Based on [L5 Captcha on Github](https://github.com/mewebstudio/captcha)
 
