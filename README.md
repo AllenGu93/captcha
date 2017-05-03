@@ -15,6 +15,11 @@ $domain/captcha/config?
 
 `<img src='http://localhost/captcha/inverse?fys8Ubmm' />`
 
+##API
+
+获取设置		get		$domain/api/get
+设置验证码参数	get		$domain/api/set
+验证验证码		post	$domain/api/get
 
 Based on [L5 Captcha on Github](https://github.com/mewebstudio/captcha)
 
