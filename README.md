@@ -1,5 +1,7 @@
 # Captcha for Notadd
 
+本插件基于 [notadd](https://github.com/notadd/notadd)
+
 ## Preview
 ![Preview](http://i.imgur.com/HYtr744.png)
 
