@@ -15,7 +15,7 @@ $domain/captcha/config?
 
 `<img src='http://localhost/captcha/inverse?fys8Ubmm' />`
 
-##API
+## API
 
 获取设置		get		$domain/api/get
 
