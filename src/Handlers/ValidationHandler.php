@@ -12,6 +12,7 @@ use Illuminate\Container\Container;
 use Notadd\Foundation\Passport\Abstracts\SetHandler as AbstractSetHandler;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+// use Illuminate\Session\Store as Session;
 
 /**
  * Class ConfigurationHandler.
@@ -68,8 +69,8 @@ class ValidationHandler extends AbstractSetHandler
     {
         $rules = ['captcha' => 'required|captcha'];
         // dd(Validator::make(Input::all(), $rules));
-        $this->validator = Validator::make(Input::all(), $rules);
-        // dd($this->request->input('captcha'));
+        // $session = app('session');
+        // dd($session->all());
         if(empty($this->request->input('captcha'))) {
             $this->empty = true;
         }
