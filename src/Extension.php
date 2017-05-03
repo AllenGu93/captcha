@@ -29,18 +29,6 @@ class Extension extends AbstractExtension
         // 翻译文件
         $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'Captcha');
 
-        // 注入 captcha 类
-        $this->app->bind('captcha', function($app)
-        {
-            return new Captcha(
-                $app['Illuminate\Filesystem\Filesystem'],
-                $app['Notadd\Foundation\Configuration\Repository'],
-                $app['Notadd\Foundation\Image\ImageManager'],
-                $app['Illuminate\Session\Store'],
-                $app['Illuminate\Hashing\BcryptHasher'],
-                $app['Illuminate\Support\Str']
-            );
-        });
         // Publish configuration files
         // $this->publishes([
         //     __DIR__.'/../config/captcha.php' => config_path('captcha.php')
@@ -63,6 +51,23 @@ class Extension extends AbstractExtension
         $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
         {
             return captcha_check($value);
+        });
+    }
+
+    public function register()
+    {
+
+        // 注入 captcha 类
+        $this->app->singleton('captcha', function($app)
+        {
+            return new Captcha(
+                $app['Illuminate\Filesystem\Filesystem'],
+                $app['Notadd\Foundation\Configuration\Repository'],
+                $app['Notadd\Foundation\Image\ImageManager'],
+                $app['Illuminate\Session\Store'],
+                $app['Illuminate\Hashing\BcryptHasher'],
+                $app['Illuminate\Support\Str']
+            );
         });
     }
 

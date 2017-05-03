@@ -67,14 +67,14 @@ class ValidationHandler extends AbstractSetHandler
      */
     public function execute()
     {
-        $rules = ['captcha' => 'required|captcha'];
+        // $rules = ['captcha' => 'required|captcha'];
         // dd(Validator::make(Input::all(), $rules));
         // $session = app('session');
         // dd($session->all());
         if(empty($this->request->input('captcha'))) {
             $this->empty = true;
         }
-        return captcha_check($this->request->get('captcha'));
+        return captcha_check($this->request->input('captcha'));
     }
 
     /**
