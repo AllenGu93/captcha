@@ -54,10 +54,10 @@ class Extension extends AbstractExtension
         });
     }
 
+    // 注入 captcha IoC 实例
     public function register()
     {
 
-        // 注入 captcha 类
         $this->app->singleton('captcha', function($app)
         {
             return new Captcha(
