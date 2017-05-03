@@ -12,6 +12,7 @@ use Illuminate\Events\Dispatcher;
 use Notadd\Captcha\Listeners\CsrfTokenRegister;
 use Notadd\Captcha\Listeners\RouteRegister;
 use Notadd\Foundation\Extension\Abstracts\Extension as AbstractExtension;
+use Notadd\Foundation\Setting\Contracts\SettingsRepository;
 
 /**
  * Class Extension.
@@ -49,6 +50,14 @@ class Extension extends AbstractExtension
         $this->mergeConfigFrom(
             __DIR__.'/../config/captcha.php', 'captcha'
         );
+
+        $setting = $this->app->make(SettingsRepository::class);
+
+        // 如有用户设置，则用用户设置覆盖原来的设置
+        if($default = $setting->get('captcha'))
+        {
+            config(['captcha.default' => $default]);
+        }
 
         // Validator extensions
         $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)

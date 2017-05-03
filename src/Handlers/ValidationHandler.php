@@ -29,6 +29,11 @@ class ValidationHandler extends AbstractSetHandler
     protected $result;
 
     /**
+     * @var bealoon
+     */
+    protected $empty = false;
+
+    /**
      * SetHandler constructor.
      *
      * @param \Illuminate\Container\Container                         $container
@@ -64,11 +69,11 @@ class ValidationHandler extends AbstractSetHandler
         $rules = ['captcha' => 'required|captcha'];
         // dd(Validator::make(Input::all(), $rules));
         $this->validator = Validator::make(Input::all(), $rules);
-        dd($this->request);
-        if($this->result = $this->validator->passes()) {
+        // dd($this->request->input('captcha'));
+        if(empty($this->request->input('captcha'))) {
             $this->empty = true;
         }
-        return captcha_check();
+        return captcha_check($this->request->get('captcha'));
     }
 
     /**
@@ -79,7 +84,11 @@ class ValidationHandler extends AbstractSetHandler
     public function errors()
     {
         $this->code = 4001;
-        $this->errors->push($this->translator->trans('Captcha::validation.fail'));
+        if ($this->empty) {
+            $this->errors->push($this->translator->trans('Captcha::validation.empty'));
+        }else{
+            $this->errors->push($this->translator->trans('Captcha::validation.fail'));
+        }
         return parent::errors();
     }
 }
