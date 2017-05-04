@@ -19,10 +19,10 @@ $domain/captcha/config?
 
 ## API
 <pre>
-操作		http请求方法	目标地址					参数
-获取设置		get			$domain/api/captcha/get		-
+操作		http请求方法	目标地址				参数
+获取设置		get		$domain/api/captcha/get		-
 
-设置验证码参数	get			$domain/api/captcha/set		-
+设置验证码参数	get		$domain/api/captcha/set		-
 
 验证验证码	post		$domain/api/captcha		'captcha':captcha
 </pre>
