@@ -5,7 +5,7 @@
 ## Preview
 ![Preview](http://i.imgur.com/HYtr744.png)
 
-## Example Usage
+## 前端调用图片验证码
 
 $domain/captcha/config?
 
@@ -19,12 +19,16 @@ $domain/captcha/config?
 
 ## API
 <pre>
-获取设置         get     $domain/api/captcha/get
+操作			http请求方法	目标地址					参数
+获取设置         get     		$domain/api/captcha/get		-
 
-设置验证码参数    get     $domain/api/captcha/set
+设置验证码参数    get     		$domain/api/captcha/set		-
 
-验证验证码       post    $domain/api/captcha
+验证验证码       post    		$domain/api/captcha			'captcha':captcha
 </pre>
+
+API授权和验证码验证返回数组请参考 [如何基于 Notadd 构建 API](https://docs.notadd.com/#/v1.0/zh-CN/howtos/api)
+
 Based on [L5 Captcha on Github](https://github.com/mewebstudio/captcha)
 
 ^_^
