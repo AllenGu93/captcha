@@ -26,8 +26,31 @@ $domain/captcha/config?
 
 验证验证码	post		$domain/api/captcha		'captcha':captcha
 </pre>
-
-API授权和验证码验证返回数组请参考 [如何基于 Notadd 构建 API](https://docs.notadd.com/#/v1.0/zh-CN/howtos/api)
+验证码验证成功返回
+<pre>
+[
+	'code'=>200,
+	'data'=>[],
+	'message'=>'验证码正确',
+]
+</pre>
+验证码为空返回
+<pre>
+[
+	'code'=>4001,
+	'data'=>[],
+	'message'=>'验证码不能为空',
+]
+</pre>
+验证码验证失败返回
+<pre>
+[
+	'code'=>4001,
+	'data'=>[],
+	'message'=>'验证码错误',
+]
+</pre>
+更多详细信息请参考 [如何基于 Notadd 构建 API](https://docs.notadd.com/#/v1.0/zh-CN/howtos/api)
 
 Based on [L5 Captcha on Github](https://github.com/mewebstudio/captcha)
 
