@@ -50,7 +50,7 @@ $domain/captcha/config?
 	'message'=>'验证码错误',
 ]
 </pre>
-更多详细信息请参考 [如何基于 Notadd 构建 API](https://docs.notadd.com/#/v1.0/zh-CN/howtos/api)
+API授权、更多详细信息请参考 [如何基于 Notadd 构建 API](https://docs.notadd.com/#/v1.0/zh-CN/howtos/api)
 
 Based on [L5 Captcha on Github](https://github.com/mewebstudio/captcha)
 
