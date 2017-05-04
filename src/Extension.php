@@ -29,11 +29,6 @@ class Extension extends AbstractExtension
         // 翻译文件
         $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'Captcha');
 
-        // Publish configuration files
-        // $this->publishes([
-        //     __DIR__.'/../config/captcha.php' => config_path('captcha.php')
-        // ], 'config');
-
         // 加载配置文件
         $this->mergeConfigFrom(
             __DIR__.'/../config/captcha.php', 'captcha'
@@ -41,17 +36,9 @@ class Extension extends AbstractExtension
 
         $setting = $this->app->make(SettingsRepository::class);
 
-        // 如有用户设置，则用用户设置覆盖原来的设置
-        if($default = $setting->get('captcha'))
-        {
-            config(['captcha.default' => $default]);
-        }
+        // 默认设置
+        config(['captcha.default' => $setting->get('captcha')]);
 
-        // Validator extensions
-        $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
-        {
-            return captcha_check($value);
-        });
     }
 
     // 注入 captcha IoC 实例

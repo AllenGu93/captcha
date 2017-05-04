@@ -1,17 +1,13 @@
 <?php
-
-namespace Notadd\Captcha;
-
 /**
  * notadd Captcha package
  *
+ * @author cst <260096556@qq.com>
  * @copyright Copyright (c) 2017 cst
- * @version 1.x
- * @author cst
- * @contact 260096556@qq.com
- * @date 2015-04-03
- * @license http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @datetime 2017-05-03
  */
+
+namespace Notadd\Captcha;
 
 use Exception;
 use Notadd\Foundation\Configuration\Repository;

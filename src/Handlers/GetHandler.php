@@ -46,16 +46,6 @@ class GetHandler extends DataHandler
             'width' => $this->settings->get('captcha.width', ''),
             'height' => $this->settings->get('captcha.height', ''),
             'quality' => $this->settings->get('captcha.quality', ''),
-            // 'lines' => $this->settings->get('captcha.lines', 6),
-            // 'bgImage' => $this->settings->get('captcha.bgImage', false),
-            // 'bgColor' => $this->settings->get('captcha.bgColor', '#ecf2f4'),
-            // 'fontColors' => $this->settings->get('captcha.fontColors', []),
-            // 'contrast' => $this->settings->get('captcha.contrast', -5),
-            // 'sensitive' => $this->settings->get('captcha.sensitive', true),
-            // 'angle' => $this->settings->get('captcha.angle', 12),
-            // 'sharpen' => $this->settings->get('captcha.sharpen', 10),
-            // 'blur' => $this->settings->get('captcha.blur', 2),
-            // 'invert' => $this->settings->get('captcha.invert', true),
         ];
     }
 }

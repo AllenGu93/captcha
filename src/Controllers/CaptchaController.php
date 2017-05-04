@@ -26,6 +26,7 @@ class CaptchaController extends Controller
      */
     public function getCaptcha(Captcha $captcha, $config = 'default')
     {
+        // dd($config);
         return $captcha->create($config);
     }
 

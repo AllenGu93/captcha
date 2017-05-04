@@ -4,12 +4,12 @@ return [
 
     'characters' => '2346789abcdefghjmnpqrtuxyzABCDEFGHJMNPQRTUXYZ',
 
-    'default'   => [
-        'length'    => 5,
-        'width'     => 120,
-        'height'    => 36,
-        'quality'   => 90,
-    ],
+    // 'default'   => [
+    //     'length'    => 5,
+    //     'width'     => 120,
+    //     'height'    => 36,
+    //     'quality'   => 90,
+    // ],
 
     'flat'   => [
         'length'    => 6,

@@ -59,14 +59,6 @@ class SetHandler extends AbstractSetHandler
         $this->settings->set('captcha.width', $this->request->input('width'));
         $this->settings->set('captcha.height', $this->request->input('height'));
         $this->settings->set('captcha.quality', $this->request->input('quality'));
-        // $this->settings->set('captcha.lines', $this->request->input('lines'));
-        // $this->settings->set('captcha.bgImage', $this->request->input('bgImage'));
-        // $this->settings->set('captcha.contrast', $this->request->input('contrast'));
-        // $this->settings->set('captcha.sensitive', $this->request->input('sensitive'));
-        // $this->settings->set('captcha.angle', $this->request->input('angle'));
-        // $this->settings->set('captcha.sharpen', $this->request->input('sharpen'));
-        // $this->settings->set('captcha.blur', $this->request->input('blur'));
-        // $this->settings->set('captcha.invert', $this->request->input('invert'));
 
         return true;
     }
