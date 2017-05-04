@@ -25,7 +25,7 @@ class RouteRegister extends AbstractRouteRegister
     public function handle()
     {
         // api路由定义
-        $this->router->group(['middleware' => ['cross', 'web'], 'prefix' => 'api/captcha'], function () {
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/captcha'], function () {
             $this->router->post('get', CaptchaController::class . '@get');
             $this->router->post('set', CaptchaController::class . '@set');
             $this->router->post('/', CaptchaController::class . '@captcha');
