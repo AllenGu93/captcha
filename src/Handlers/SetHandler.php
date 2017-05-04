@@ -54,19 +54,19 @@ class SetHandler extends AbstractSetHandler
      */
     public function execute()
     {
-        $this->settings->set('Captcha.enabled', $this->request->input('enabled'));
-        $this->settings->set('Captcha.length', $this->request->input('length'));
-        $this->settings->set('Captcha.width', $this->request->input('width'));
-        $this->settings->set('Captcha.height', $this->request->input('height'));
-        $this->settings->set('Captcha.quality', $this->request->input('quality'));
-        // $this->settings->set('Captcha.lines', $this->request->input('lines'));
-        // $this->settings->set('Captcha.bgImage', $this->request->input('bgImage'));
-        // $this->settings->set('Captcha.contrast', $this->request->input('contrast'));
-        // $this->settings->set('Captcha.sensitive', $this->request->input('sensitive'));
-        // $this->settings->set('Captcha.angle', $this->request->input('angle'));
-        // $this->settings->set('Captcha.sharpen', $this->request->input('sharpen'));
-        // $this->settings->set('Captcha.blur', $this->request->input('blur'));
-        // $this->settings->set('Captcha.invert', $this->request->input('invert'));
+        $this->settings->set('captcha.enabled', $this->request->input('enabled'));
+        $this->settings->set('captcha.length', $this->request->input('length'));
+        $this->settings->set('captcha.width', $this->request->input('width'));
+        $this->settings->set('captcha.height', $this->request->input('height'));
+        $this->settings->set('captcha.quality', $this->request->input('quality'));
+        // $this->settings->set('captcha.lines', $this->request->input('lines'));
+        // $this->settings->set('captcha.bgImage', $this->request->input('bgImage'));
+        // $this->settings->set('captcha.contrast', $this->request->input('contrast'));
+        // $this->settings->set('captcha.sensitive', $this->request->input('sensitive'));
+        // $this->settings->set('captcha.angle', $this->request->input('angle'));
+        // $this->settings->set('captcha.sharpen', $this->request->input('sharpen'));
+        // $this->settings->set('captcha.blur', $this->request->input('blur'));
+        // $this->settings->set('captcha.invert', $this->request->input('invert'));
 
         return true;
     }

@@ -42,20 +42,20 @@ class GetHandler extends DataHandler
     public function data()
     {
         return [
-            'length' => $this->settings->get('Captcha.length', ''),
-            'width' => $this->settings->get('Captcha.width', ''),
-            'height' => $this->settings->get('Captcha.height', ''),
-            'quality' => $this->settings->get('Captcha.quality', ''),
-            // 'lines' => $this->settings->get('Captcha.lines', 6),
-            // 'bgImage' => $this->settings->get('Captcha.bgImage', false),
-            // 'bgColor' => $this->settings->get('Captcha.bgColor', '#ecf2f4'),
-            // 'fontColors' => $this->settings->get('Captcha.fontColors', []),
-            // 'contrast' => $this->settings->get('Captcha.contrast', -5),
-            // 'sensitive' => $this->settings->get('Captcha.sensitive', true),
-            // 'angle' => $this->settings->get('Captcha.angle', 12),
-            // 'sharpen' => $this->settings->get('Captcha.sharpen', 10),
-            // 'blur' => $this->settings->get('Captcha.blur', 2),
-            // 'invert' => $this->settings->get('Captcha.invert', true),
+            'length' => $this->settings->get('captcha.length', ''),
+            'width' => $this->settings->get('captcha.width', ''),
+            'height' => $this->settings->get('captcha.height', ''),
+            'quality' => $this->settings->get('captcha.quality', ''),
+            // 'lines' => $this->settings->get('captcha.lines', 6),
+            // 'bgImage' => $this->settings->get('captcha.bgImage', false),
+            // 'bgColor' => $this->settings->get('captcha.bgColor', '#ecf2f4'),
+            // 'fontColors' => $this->settings->get('captcha.fontColors', []),
+            // 'contrast' => $this->settings->get('captcha.contrast', -5),
+            // 'sensitive' => $this->settings->get('captcha.sensitive', true),
+            // 'angle' => $this->settings->get('captcha.angle', 12),
+            // 'sharpen' => $this->settings->get('captcha.sharpen', 10),
+            // 'blur' => $this->settings->get('captcha.blur', 2),
+            // 'invert' => $this->settings->get('captcha.invert', true),
         ];
     }
 }
