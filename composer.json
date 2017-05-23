@@ -1,5 +1,5 @@
 {
-	"name": "notadd/captcha",
+	"name": "ganlanshu0211/captcha",
 	"type": "notadd-extension",
 	"description": "Laravel 5 Captcha Package",
 	"keywords": ["notadd Captcha", "notadd Security"],
