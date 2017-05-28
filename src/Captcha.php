@@ -408,9 +408,13 @@ class Captcha
             $value = $this->str->lower($value);
         }
 
-        $this->session->remove('captcha');
+        $bool = $this->hasher->check($value, $key);
 
-        return $this->hasher->check($value, $key);
+        if($bool) {
+            $this->session->remove('captcha');
+        }
+
+        return $bool;
     }
 
     /**
