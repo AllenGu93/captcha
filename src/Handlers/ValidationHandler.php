@@ -10,19 +10,12 @@ namespace Notadd\Captcha\Handlers;
 
 use Illuminate\Container\Container;
 use Notadd\Foundation\Passport\Abstracts\SetHandler as AbstractSetHandler;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
-// use Illuminate\Session\Store as Session;
 
 /**
  * Class ConfigurationHandler.
  */
 class ValidationHandler extends AbstractSetHandler
 {
-    /**
-     * @var Illuminate\Support\Facades\Validator
-     */
-    protected $validator;
 
     /**
      * @var bealoon
